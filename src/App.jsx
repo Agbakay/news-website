@@ -8,7 +8,6 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <CategoryFilter />
       <Hero />
       <Footer />
     </>

@@ -12,7 +12,7 @@ const Hero = () => {
   return (
     <div>
       {/* News Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
         {articles.length > 0 ? (
           articles.map((_, index) => <NewsCard key={index} index={index} />)
         ) : (

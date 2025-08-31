@@ -6,19 +6,29 @@ const useNewsStore = create((set, get) => ({
 
   setArticles: (newArticles) => set({ articles: newArticles }),
   setCategory: (newCategory) => {
-    set({ category: newCategory });
+    set({ category: newCategory, searchQuery: "" });
     get().fetchNews(); // automatically fetch new data when category changes
   },
+
+  setSearchQuery: (query) => set({ searchQuery: query }),
 
   fetchNews: async () => {
     const apiKey = import.meta.env.VITE_API_KEY;
     if (!apiKey) {
-      console.warn("API key is missing in your .env file");
+      console.warn("API key is missing in the .env file");
       return;
     }
 
-    const { category } = get();
-    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${apiKey}`;
+    const { category, searchQuery } = get();
+    let url = "";
+
+    if ((searchQuery || "").trim() !== "") {
+      url = `http://newsapi.org/v2/everything?q=${encodeURIComponent(
+        searchQuery
+      )}&sortBy=publishedAt&language=en&apiKey=${apiKey}`;
+    } else {
+      url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${apiKey}`;
+    }
 
     try {
       const response = await fetch(url);
@@ -27,7 +37,7 @@ const useNewsStore = create((set, get) => ({
         set({ articles: data.articles });
       }
     } catch (error) {
-      console.error("Error fetching news:", error);
+      console.error("Error loading news:", error);
     }
   },
 }));
