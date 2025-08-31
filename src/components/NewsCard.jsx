@@ -1,27 +1,28 @@
 import React from "react";
+import useNewsStore from "./NewsStore";
 
-const NewsCard = ({ title, description, src, url }) => {
+const NewsCard = ({ index }) => {
+  const { articles } = useNewsStore();
+  const news = articles[index];
+
+  if (!news) return null;
   return (
     <div className="max-w-md rounded-2xl shadow-md overflow-hidden bg-white mb-6">
-      {src && (
+      {news.urlToImage && (
         <img
           className="w-full h-48 object-cover"
-          src={src}
-          alt={title || "News image"}
+          src={news.urlToImage}
+          alt={news.title || "News image"}
         />
       )}
       <div className="p-4">
-        <h2 className="text-lg font-bold text-gray-800 mb-2">{title}</h2>
+        <h2 className="text-lg font-bold text-gray-800 mb-2">{news.title}</h2>
         <p className="text-sm text-gray-600 mb-4">
-          {description
-            ? description.length > 120
-              ? description.slice(0, 120) + "..."
-              : description
-            : "No description available."}
+          {news.description || "Empty placeholder"}
         </p>
-        {url && (
+        {news.url && (
           <a
-            href={url}
+            href={news.url}
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 font-semibold hover:underline"
