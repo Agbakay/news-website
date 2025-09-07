@@ -1,12 +1,42 @@
-# React + Vite
+This is a simple React-based news website. The project fetches and displays news articles in a responsive grid layout using Zustand for state management.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
 
-Currently, two official plugins are available:
+- **Fetches news articles** from a global store using Zustand.
+- **Displays articles** in a responsive grid using the `NewsCard` component.
+- **Loading state** shown while articles are being fetched.
+- **Email input field** for future newsletter or subscription features.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Structure
 
-## Expanding the ESLint configuration
+news-website/ ├── public/ 
+│ └── index.html
+ ├── src/ │ 
+ ├── components/ │
+  │ ├── Hero.jsx │ 
+  │ ├── NewsCard.jsx │ 
+  │ └── NewsStore.js │
+   ├── App.jsx │ 
+   ├── index.js │ 
+   └── styles/ │
+    └── index.css 
+    ├── package.json 
+    └── README.md
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+## Main Components
+
+- **Hero.jsx**  
+  Fetches news articles and displays them in a grid. Uses `useNewsStore` for state and `NewsCard` for rendering each article.
+
+- **NewsCard.jsx**  
+  Renders individual news article details (not shown here).
+
+- **NewsStore.js**  
+  Zustand store for managing and fetching news articles (not shown here).
+
+## Usage
+
+1. Clone the repository.
+2. Install dependencies:
