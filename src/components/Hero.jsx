@@ -19,6 +19,7 @@ const Hero = () => {
           <p>Loading news...</p>
         )}
       </div>
+      <input type="email" name="" id="" placeholder="Eail"/>
     </div>
   );
 };

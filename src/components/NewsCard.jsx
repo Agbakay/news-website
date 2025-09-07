@@ -26,9 +26,9 @@ const NewsCard = ({ index }) => {
               href={news.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 font-semibold hover:underline"
+              className="text-gray-100 font-semibold hover:bg-gray-400 px-5 py-2 rounded-lg bg-black"
             >
-              Read More
+              Read Article
             </a>
           )}
         </div>
